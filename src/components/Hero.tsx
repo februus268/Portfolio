@@ -365,7 +365,10 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="portfolio-section relative min-h-screen flex flex-col justify-center overflow-hidden pt-28 pb-16 md:pt-32 md:pb-20">
+    <section
+      id="hero"
+      className="portfolio-section relative min-h-screen flex flex-col justify-center overflow-hidden pt-28 pb-16 md:pt-32 md:pb-20"
+    >
       <div className="container-wide my-auto w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
         {/* Text column */}
         <motion.div variants={container} initial="hidden" animate="show">
@@ -417,11 +420,11 @@ export default function Hero() {
           <motion.div
             variants={fadeUp}
             style={{ marginTop: "7px" }}
-            className="mt-14 flex flex-wrap items-center gap-5"
+            className="hero-actions mt-14 flex flex-wrap items-center gap-5"
           >
             <MagneticButton
               onClick={() => scrollTo("projects")}
-              className="h-12 min-w-[175px] px-7"
+              className="hero-projects-button h-12 min-w-[175px] px-7"
             >
               View projects
             </MagneticButton>
@@ -437,8 +440,7 @@ export default function Hero() {
 
           <motion.div
             variants={fadeUp}
-            style={{ marginTop: "15px", marginLeft: "5px" }}
-            className="flex items-center gap-10"
+            className="hero-social-links flex items-center gap-10"
           >
             <a
               href="https://github.com/februus268"

@@ -68,19 +68,19 @@ export default function Contact() {
 
       <SectionContent className="relative">
         <Reveal>
-          <span className="kicker mb-6">Contact</span>
-          <h2 className="font-display text-[2.5rem] sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary leading-[1.08] max-w-3xl">
+          <span className="kicker mb-4 sm:mb-6">Contact</span>
+          <h2 className="font-display text-[2.2rem] xs:text-[2.6rem] sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary leading-[1.08] max-w-3xl">
             Let's build something{" "}
             <span className="text-gradient">together.</span>
           </h2>
-          <p className="mt-5 text-text-secondary text-lg md:text-xl max-w-xl leading-relaxed">
+          <p className="mt-4 sm:mt-5 text-text-secondary text-base sm:text-lg md:text-xl max-w-xl leading-relaxed">
             I'm open to internship opportunities, collaborations, and
             conversations about technology.
           </p>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mt-[52px] sm:mt-[68px] lg:mt-[76px] w-full max-w-4xl lg:max-w-5xl translate-y-[12px]">
+          <div className="mt-8 sm:mt-[68px] lg:mt-[76px] w-full max-w-4xl lg:max-w-5xl translate-y-[12px]">
             {links.map((link) => {
               if (link.isEmail) {
                 return (
@@ -89,7 +89,7 @@ export default function Contact() {
                     onClick={handleCopyEmail}
                     type="button"
                     style={{ "--link-color": link.color } as React.CSSProperties}
-                    className="group w-full text-left grid sm:grid-cols-[180px_1fr_auto] items-center gap-3 sm:gap-8 py-6 md:py-7 border-t border-border transition-all duration-300 hover:bg-bg-subtle/70 rounded-2xl px-5 md:px-8 cursor-pointer"
+                    className="group w-full text-left grid grid-cols-[1fr_auto] sm:grid-cols-[180px_1fr_auto] items-center gap-y-2 gap-x-3 sm:gap-8 py-4 sm:py-6 md:py-7 border-t border-border transition-all duration-300 hover:bg-bg-subtle/70 rounded-2xl px-3.5 sm:px-5 md:px-8 cursor-pointer"
                     whileHover={{ x: 6 }}
                     transition={{ duration: 0.25 }}
                   >
@@ -106,11 +106,11 @@ export default function Contact() {
                       {link.label}
                     </span>
 
-                    <span className="font-display font-semibold text-xl md:text-2xl text-text-primary tracking-tight">
+                    <span className="col-span-2 sm:col-span-1 order-3 sm:order-none font-display font-semibold text-lg sm:text-xl md:text-2xl text-text-primary tracking-tight truncate max-w-full">
                       {link.value}
                     </span>
 
-                    <div className="justify-self-end flex items-center gap-2 text-text-muted">
+                    <div className="order-2 sm:order-none justify-self-end flex items-center gap-2 text-text-muted">
                       {copied ? (
                         <span className="flex items-center gap-1.5 text-emerald-500 font-medium text-sm">
                           <Check size={18} />
@@ -119,7 +119,7 @@ export default function Contact() {
                       ) : (
                         <ArrowUpRight
                           size={22}
-                          className="hidden sm:block text-text-muted group-hover:text-[var(--link-color)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                          className="text-text-muted group-hover:text-[var(--link-color)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
                         />
                       )}
                     </div>
@@ -134,7 +134,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ "--link-color": link.color } as React.CSSProperties}
-                  className="group grid sm:grid-cols-[180px_1fr_auto] items-center gap-3 sm:gap-8 py-6 md:py-7 border-t border-border last:border-b transition-all duration-300 hover:bg-bg-subtle/70 rounded-2xl px-5 md:px-8 cursor-pointer"
+                  className="group grid grid-cols-[1fr_auto] sm:grid-cols-[180px_1fr_auto] items-center gap-y-2 gap-x-3 sm:gap-8 py-4 sm:py-6 md:py-7 border-t border-border last:border-b transition-all duration-300 hover:bg-bg-subtle/70 rounded-2xl px-3.5 sm:px-5 md:px-8 cursor-pointer"
                   whileHover={{ x: 6 }}
                   transition={{ duration: 0.25 }}
                 >
@@ -151,13 +151,13 @@ export default function Contact() {
                     {link.label}
                   </span>
 
-                  <span className="font-display font-semibold text-xl md:text-2xl text-text-primary tracking-tight group-hover:text-accent transition-colors">
+                  <span className="col-span-2 sm:col-span-1 order-3 sm:order-none font-display font-semibold text-lg sm:text-xl md:text-2xl text-text-primary tracking-tight group-hover:text-accent transition-colors truncate max-w-full">
                     {link.value}
                   </span>
 
                   <ArrowUpRight
                     size={22}
-                    className="hidden sm:block justify-self-end text-text-muted group-hover:text-[var(--link-color)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                    className="order-2 sm:order-none justify-self-end text-text-muted group-hover:text-[var(--link-color)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
                   />
                 </motion.a>
               );

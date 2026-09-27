@@ -10,7 +10,7 @@ export default function Footer() {
             <p className="text-sm text-text-muted mt-1">Information Technology Student</p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <a
               href="https://github.com/februus268"
               target="_blank"

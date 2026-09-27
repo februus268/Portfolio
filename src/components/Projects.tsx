@@ -180,10 +180,11 @@ function VietGooShowcase({
             onOpenLightbox({
               src: vietgooCertificate,
               alt: "AI Riser Vietnam 2026 Certificate of Completion — Top 500",
-              title: "AI Riser Vietnam 2026 Certificate of Completion — Top 500",
+              title:
+                "AI Riser Vietnam 2026 Certificate of Completion — Top 500",
             });
           }}
-          className="relative overflow-hidden bg-bg-subtle md:rounded-l-[28px] cursor-zoom-in group/zoom"
+          className="relative overflow-hidden bg-bg-subtle rounded-t-[26px] md:rounded-tr-none md:rounded-l-[28px] cursor-zoom-in group/zoom flex items-center justify-center min-h-[220px] sm:min-h-[260px] md:min-h-full"
         >
           <motion.div
             style={{ rotateX, rotateY, transformPerspective: 1200 }}
@@ -200,6 +201,8 @@ function VietGooShowcase({
             <motion.img
               src={vietgooCertificate}
               alt="AI Riser Vietnam 2026 Certificate of Completion — Top 500"
+              width={3505}
+              height={2480}
               loading="eager"
               decoding="async"
               className="relative z-10 block h-auto w-full object-contain object-center transition-transform duration-700 group-hover:scale-[1.015]"
@@ -218,38 +221,38 @@ function VietGooShowcase({
               style={{ boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.06)" }}
             />
 
-            <div className="absolute left-5 top-5 z-30 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/90 px-3.5 py-2 text-xs font-medium text-text-secondary shadow-sm backdrop-blur-md">
+            <div className="absolute left-4 top-4 sm:left-5 sm:top-5 z-30 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/90 px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs font-medium text-text-secondary shadow-sm backdrop-blur-md">
               <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_10px_rgba(37,99,235,0.6)]" />
               AI Riser Vietnam 2026
             </div>
           </motion.div>
         </div>
 
-        <div className="relative z-10 flex min-h-full flex-col items-center justify-center px-7 py-10 text-center sm:px-9 sm:py-12 md:px-10 md:py-12 lg:px-12">
+        <div className="relative z-10 flex min-h-full flex-col items-center justify-center px-5 py-7 sm:px-8 sm:py-10 md:px-10 md:py-12 lg:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 flex items-center justify-center gap-4"
+            className="mb-5 sm:mb-6 flex items-center justify-center gap-3 sm:gap-4"
           >
             <div
-              className="relative flex h-[58px] w-[58px] shrink-0 items-center justify-center rounded-full"
+              className="relative flex h-[50px] w-[50px] sm:h-[58px] sm:w-[58px] shrink-0 items-center justify-center rounded-full"
               style={{
                 background:
                   "conic-gradient(from 180deg, var(--color-accent), var(--color-violet), var(--color-cyan), var(--color-accent))",
               }}
             >
               <div className="absolute inset-[3px] flex items-center justify-center rounded-full bg-bg-surface">
-                <Trophy size={23} style={{ color: "var(--color-accent)" }} />
+                <Trophy size={21} style={{ color: "var(--color-accent)" }} />
               </div>
             </div>
 
             <div className="text-left">
-              <span className="block text-[11px] font-mono uppercase tracking-[0.18em] text-text-muted">
+              <span className="block text-[10.5px] sm:text-[11px] font-mono uppercase tracking-[0.18em] text-text-muted">
                 AI Riser Vietnam 2026
               </span>
-              <p className="mt-1 font-display text-4xl font-bold leading-none text-gradient sm:text-5xl">
+              <p className="mt-0.5 sm:mt-1 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-none text-gradient">
                 TOP 500
               </p>
             </div>
@@ -260,7 +263,7 @@ function VietGooShowcase({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="font-display text-4xl font-semibold tracking-tight text-text-primary sm:text-5xl"
+            className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-text-primary"
           >
             VietGoo
           </motion.h3>
@@ -270,7 +273,7 @@ function VietGooShowcase({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.14 }}
-            className="mt-4 max-w-[560px] text-base leading-7 text-text-secondary sm:text-[1.05rem] sm:leading-8"
+            className="mt-3 sm:mt-4 max-w-[560px] text-sm sm:text-base md:text-[1.05rem] leading-relaxed sm:leading-8 text-text-secondary"
           >
             An AI-powered travel companion that helps users discover
             destinations, learn Vietnamese history and culture, explore local
@@ -282,13 +285,13 @@ function VietGooShowcase({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-7 flex max-w-[420px] flex-wrap justify-center gap-2.5"
+            className="mt-5 sm:mt-7 flex max-w-[420px] flex-wrap justify-center gap-2 sm:gap-2.5"
           >
             {["Gemini", "Travel", "React", "TypeScript"].map((tag) => (
               <motion.span
                 key={tag}
                 whileHover={{ y: -2, scale: 1.04 }}
-                className="inline-flex min-h-9 items-center justify-center rounded-full bg-bg-subtle px-4 py-1.5 text-sm font-medium tracking-wide text-text-secondary transition-all duration-300 hover:bg-bg-surface hover:text-text-primary shadow-sm"
+                className="inline-flex min-h-8 sm:min-h-9 items-center justify-center rounded-full bg-bg-subtle px-3.5 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-medium tracking-wide text-text-secondary transition-all duration-300 hover:bg-bg-surface hover:text-text-primary shadow-sm"
               >
                 {tag}
               </motion.span>
@@ -392,7 +395,7 @@ function EduRoomShowcase({
               title: "EduRoom — Classroom Scheduling & Room Booking Platform",
             });
           }}
-          className="relative overflow-hidden bg-bg-subtle md:rounded-l-[28px] cursor-zoom-in group/zoom flex items-center justify-center min-h-[260px] md:min-h-full"
+          className="relative overflow-hidden bg-bg-subtle rounded-t-[26px] md:rounded-tr-none md:rounded-l-[28px] cursor-zoom-in group/zoom flex items-center justify-center min-h-[220px] sm:min-h-[260px] md:min-h-full"
         >
           <motion.div
             style={{ rotateX, rotateY, transformPerspective: 1200 }}
@@ -409,6 +412,8 @@ function EduRoomShowcase({
             <motion.img
               src={eduRoomImage}
               alt="EduRoom Classroom Management Dashboard"
+              width={1902}
+              height={931}
               loading="eager"
               decoding="async"
               className="relative z-10 block h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.015]"
@@ -430,31 +435,31 @@ function EduRoomShowcase({
         </div>
 
         {/* Details Column — Centered Text */}
-        <div className="group/details relative z-10 flex min-h-full flex-col items-center justify-center px-7 py-10 text-center sm:px-9 sm:py-12 md:px-10 md:py-12 lg:px-12">
+        <div className="group/details relative z-10 flex min-h-full flex-col items-center justify-center px-5 py-7 sm:px-8 sm:py-10 md:px-10 md:py-12 lg:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 flex items-center justify-center gap-4"
+            className="mb-5 sm:mb-6 flex items-center justify-center gap-3 sm:gap-4"
           >
             <div
-              className="relative flex h-[58px] w-[58px] shrink-0 items-center justify-center rounded-full"
+              className="relative flex h-[50px] w-[50px] sm:h-[58px] sm:w-[58px] shrink-0 items-center justify-center rounded-full"
               style={{
                 background:
                   "conic-gradient(from 180deg, #6366f1, #8b5cf6, #3b82f6, #6366f1)",
               }}
             >
               <div className="absolute inset-[3px] flex items-center justify-center rounded-full bg-bg-surface">
-                <GraduationCap size={24} className="text-indigo-600" />
+                <GraduationCap size={22} className="text-indigo-600" />
               </div>
             </div>
 
             <div className="text-left">
-              <span className="block text-[11px] font-mono uppercase tracking-[0.18em] text-text-muted">
+              <span className="block text-[10.5px] sm:text-[11px] font-mono uppercase tracking-[0.18em] text-text-muted">
                 Classroom & Room Management
               </span>
-              <p className="mt-1 font-display text-4xl font-bold leading-none text-gradient sm:text-5xl">
+              <p className="mt-0.5 sm:mt-1 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-none text-gradient">
                 High School
               </p>
             </div>
@@ -465,7 +470,7 @@ function EduRoomShowcase({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="font-display text-4xl font-semibold tracking-tight text-text-primary sm:text-5xl"
+            className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-text-primary"
           >
             EduRoom
           </motion.h3>
@@ -475,9 +480,10 @@ function EduRoomShowcase({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.14 }}
-            className="mt-4 max-w-[560px] text-base leading-7 text-text-secondary sm:text-[1.05rem] sm:leading-8 text-center"
+            className="mt-3 sm:mt-4 max-w-[560px] text-sm sm:text-base md:text-[1.05rem] leading-relaxed sm:leading-8 text-center text-text-secondary"
           >
-            Modern classroom scheduling and room booking platform for Vietnamese high schools, built with Django.
+            Modern classroom scheduling and room booking platform for Vietnamese
+            high schools, built with Django.
           </motion.p>
 
           <motion.div
@@ -485,13 +491,13 @@ function EduRoomShowcase({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-7 flex max-w-[420px] flex-wrap justify-center gap-2.5"
+            className="mt-5 sm:mt-7 flex max-w-[420px] flex-wrap justify-center gap-2 sm:gap-2.5"
           >
             {["Django", "Python", "SQLite", "Bootstrap"].map((tag) => (
               <motion.span
                 key={tag}
                 whileHover={{ y: -2, scale: 1.04 }}
-                className="inline-flex min-h-9 items-center justify-center rounded-full bg-bg-subtle px-4 py-1.5 text-sm font-medium tracking-wide text-text-secondary transition-all duration-300 hover:bg-bg-surface hover:text-text-primary shadow-sm"
+                className="inline-flex min-h-8 sm:min-h-9 items-center justify-center rounded-full bg-bg-subtle px-3.5 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-medium tracking-wide text-text-secondary transition-all duration-300 hover:bg-bg-surface hover:text-text-primary shadow-sm"
               >
                 {tag}
               </motion.span>
@@ -621,7 +627,7 @@ function ProjectCard({
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col items-center text-center flex-1 justify-between px-7 py-6 md:px-8 md:py-7">
+      <div className="relative z-10 flex flex-col items-center text-center flex-1 justify-between px-5 py-6 sm:px-7 sm:py-6 md:px-8 md:py-7">
         <div className="flex flex-col items-center w-full">
           <h3 className="font-display font-semibold tracking-tight text-text-primary text-xl md:text-2xl">
             {project.title}
@@ -678,7 +684,11 @@ export default function Projects() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
             {cliProjects.map((project, index) => (
-              <ProjectCard key={project.title} project={project} index={index} />
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={index}
+              />
             ))}
           </div>
         </div>

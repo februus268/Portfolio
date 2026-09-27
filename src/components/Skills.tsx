@@ -29,7 +29,7 @@ const skillGroups: SkillGroup[] = [
     skills: ["React", "TypeScript", "JavaScript", "HTML", "CSS"],
     color: "var(--color-indigo)",
     gradient: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-    span: "lg:col-span-7",
+    span: "md:col-span-1 lg:col-span-7",
   },
   {
     icon: Code2,
@@ -38,7 +38,7 @@ const skillGroups: SkillGroup[] = [
     skills: ["C++", "Python"],
     color: "var(--color-accent)",
     gradient: "linear-gradient(135deg, #2563eb, #06b6d4)",
-    span: "lg:col-span-5",
+    span: "md:col-span-1 lg:col-span-5",
   },
   {
     icon: Binary,
@@ -47,7 +47,7 @@ const skillGroups: SkillGroup[] = [
     skills: ["Data Structures", "Searching", "Sorting", "Problem Solving"],
     color: "var(--color-violet)",
     gradient: "linear-gradient(135deg, #8b5cf6, #ec4899)",
-    span: "lg:col-span-5",
+    span: "md:col-span-1 lg:col-span-5",
   },
   {
     icon: Database,
@@ -56,7 +56,7 @@ const skillGroups: SkillGroup[] = [
     skills: ["SQL", "Database Fundamentals"],
     color: "var(--color-cyan)",
     gradient: "linear-gradient(135deg, #06b6d4, #3b82f6)",
-    span: "lg:col-span-4",
+    span: "md:col-span-1 lg:col-span-4",
   },
   {
     icon: Wrench,
@@ -65,7 +65,7 @@ const skillGroups: SkillGroup[] = [
     skills: ["Git", "GitHub", "Linux"],
     color: "var(--color-accent)",
     gradient: "linear-gradient(135deg, #2563eb, #6366f1)",
-    span: "lg:col-span-3",
+    span: "md:col-span-2 lg:col-span-3",
   },
 ];
 
@@ -186,14 +186,17 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
           relative
           z-10
           h-full
-          min-h-[280px]
+          min-h-[240px]
+          sm:min-h-[280px]
           flex
           flex-col
           items-center
           justify-center
           text-center
-          px-7
-          py-10
+          px-5
+          py-8
+          sm:px-7
+          sm:py-10
           md:px-10
         "
       >
@@ -390,7 +393,7 @@ export default function Skills() {
           />
         </Reveal>
 
-        <div className="mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6">
+        <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5 md:gap-6">
           {skillGroups.map((group, i) => (
             <SkillCard key={group.title} group={group} index={i} />
           ))}
