@@ -90,7 +90,7 @@ const badges: Badge[] = [
 ];
 
 const terminalLines = [
-  "npm run dev",
+  " npm run dev",
   ">> Ngô Võ Công Quyến",
   ">> 06/02/2008",
   ">> IT Student @ UTE",
