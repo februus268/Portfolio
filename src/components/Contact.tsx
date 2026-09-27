@@ -1,15 +1,21 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Reveal } from "./ui";
-import { Mail, ArrowUpRight } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./Icons";
+import { Reveal, SectionContent } from "./ui";
+import { Mail, ArrowUpRight, Check } from "lucide-react";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  FacebookIcon,
+  InstagramIcon,
+} from "./Icons";
 
 const links = [
   {
     icon: Mail,
     label: "Email",
     value: "congquyennv123@gmail.com",
-    href: "mailto:congquyennv123@gmail.com",
     color: "var(--color-accent)",
+    isEmail: true,
   },
   {
     icon: GithubIcon,
@@ -25,15 +31,33 @@ const links = [
     href: "https://linkedin.com/in/cong-quyen-nv-01b854429",
     color: "var(--color-violet)",
   },
+  {
+    icon: FacebookIcon,
+    label: "Facebook",
+    value: "NV Cong Quyen",
+    href: "https://www.facebook.com/congquyennv.826/",
+    color: "#1877f2",
+  },
+  {
+    icon: InstagramIcon,
+    label: "Instagram",
+    value: "februus.268",
+    href: "https://www.instagram.com/februus.268/",
+    color: "#e1306c",
+  },
 ];
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("congquyennv123@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <section
-      id="contact"
-      className="section-py relative"
-      style={{ paddingBottom: "clamp(64px, 9vw, 120px)" }}
-    >
+    <section id="contact" className="portfolio-section relative">
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-72 rounded-full blur-[100px] opacity-25 pointer-events-none"
         style={{
@@ -42,56 +66,105 @@ export default function Contact() {
         }}
       />
 
-      <div className="container-wide relative">
+      <SectionContent className="relative">
         <Reveal>
-          <span className="kicker mb-7">Contact</span>
-          <h2 className="font-display text-[2.5rem] sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary leading-[1.08] max-w-2xl">
+          <span className="kicker mb-6">Contact</span>
+          <h2 className="font-display text-[2.5rem] sm:text-5xl lg:text-6xl font-semibold tracking-tight text-text-primary leading-[1.08] max-w-3xl">
             Let's build something{" "}
             <span className="text-gradient">together.</span>
           </h2>
-          <p className="mt-6 text-text-secondary text-lg md:text-xl max-w-md leading-relaxed">
+          <p className="mt-5 text-text-secondary text-lg md:text-xl max-w-xl leading-relaxed">
             I'm open to internship opportunities, collaborations, and
             conversations about technology.
           </p>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mt-24 sm:mt-32 lg:mt-48 translate-y-[12px]">
-            {links.map((link) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith("mailto") ? undefined : "_blank"}
-                rel="noopener noreferrer"
-                style={{ "--link-color": link.color } as React.CSSProperties}
-                className="group grid sm:grid-cols-[160px_1fr_auto] items-center gap-3 sm:gap-8 py-7 md:py-8 border-t border-border last:border-b transition-colors duration-300 hover:bg-bg-subtle/60 -mx-6 px-6 md:-mx-10 md:px-10"
-                whileHover={{ x: 6 }}
-                transition={{ duration: 0.25 }}
-              >
-                <span className="flex items-center gap-2.5 text-sm font-medium text-text-muted">
-                  <span
-                    className="w-9 h-9 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                    style={{
-                      background: `color-mix(in srgb, ${link.color} 14%, transparent)`,
-                      color: link.color,
-                    }}
+          <div className="mt-[52px] sm:mt-[68px] lg:mt-[76px] w-full max-w-4xl lg:max-w-5xl translate-y-[12px]">
+            {links.map((link) => {
+              if (link.isEmail) {
+                return (
+                  <motion.button
+                    key={link.label}
+                    onClick={handleCopyEmail}
+                    type="button"
+                    style={{ "--link-color": link.color } as React.CSSProperties}
+                    className="group w-full text-left grid sm:grid-cols-[180px_1fr_auto] items-center gap-3 sm:gap-8 py-6 md:py-7 border-t border-border transition-all duration-300 hover:bg-bg-subtle/70 rounded-2xl px-5 md:px-8 cursor-pointer"
+                    whileHover={{ x: 6 }}
+                    transition={{ duration: 0.25 }}
                   >
-                    <link.icon size={16} />
+                    <span className="flex items-center gap-3 text-sm font-medium text-text-muted">
+                      <span
+                        className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-sm"
+                        style={{
+                          background: `color-mix(in srgb, ${link.color} 14%, transparent)`,
+                          color: link.color,
+                        }}
+                      >
+                        <link.icon size={17} />
+                      </span>
+                      {link.label}
+                    </span>
+
+                    <span className="font-display font-semibold text-xl md:text-2xl text-text-primary tracking-tight">
+                      {link.value}
+                    </span>
+
+                    <div className="justify-self-end flex items-center gap-2 text-text-muted">
+                      {copied ? (
+                        <span className="flex items-center gap-1.5 text-emerald-500 font-medium text-sm">
+                          <Check size={18} />
+                          <span>Đã sao chép!</span>
+                        </span>
+                      ) : (
+                        <ArrowUpRight
+                          size={22}
+                          className="hidden sm:block text-text-muted group-hover:text-[var(--link-color)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                        />
+                      )}
+                    </div>
+                  </motion.button>
+                );
+              }
+
+              return (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ "--link-color": link.color } as React.CSSProperties}
+                  className="group grid sm:grid-cols-[180px_1fr_auto] items-center gap-3 sm:gap-8 py-6 md:py-7 border-t border-border last:border-b transition-all duration-300 hover:bg-bg-subtle/70 rounded-2xl px-5 md:px-8 cursor-pointer"
+                  whileHover={{ x: 6 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <span className="flex items-center gap-3 text-sm font-medium text-text-muted">
+                    <span
+                      className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-sm"
+                      style={{
+                        background: `color-mix(in srgb, ${link.color} 14%, transparent)`,
+                        color: link.color,
+                      }}
+                    >
+                      <link.icon size={17} />
+                    </span>
+                    {link.label}
                   </span>
-                  {link.label}
-                </span>
-                <span className="font-display text-xl md:text-2xl text-text-primary">
-                  {link.value}
-                </span>
-                <ArrowUpRight
-                  size={22}
-                  className="hidden sm:block justify-self-end text-text-muted group-hover:text-[var(--link-color)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
-                />
-              </motion.a>
-            ))}
+
+                  <span className="font-display font-semibold text-xl md:text-2xl text-text-primary tracking-tight group-hover:text-accent transition-colors">
+                    {link.value}
+                  </span>
+
+                  <ArrowUpRight
+                    size={22}
+                    className="hidden sm:block justify-self-end text-text-muted group-hover:text-[var(--link-color)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                  />
+                </motion.a>
+              );
+            })}
           </div>
         </Reveal>
-      </div>
+      </SectionContent>
     </section>
   );
 }

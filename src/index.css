@@ -42,9 +42,12 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 80px;
   scrollbar-width: thin;
   scrollbar-color: #d9d5c6 var(--color-bg-primary);
   background-color: var(--color-bg-primary);
+  overflow-x: clip;
 }
 
 body {
@@ -54,7 +57,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -94,41 +97,98 @@ body {
   }
 }
 
-/* ===== Section spacing (plain CSS — guaranteed to apply) ===== */
+/* ===== Section Layout & Viewport Height ===== */
+.portfolio-section,
 .section-py {
-  padding-top: 220px;
-  padding-bottom: 220px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  box-sizing: border-box;
+  padding-top: clamp(4.5rem, 8vh, 6.5rem);
+  padding-bottom: clamp(3.5rem, 6vh, 5.5rem);
+}
+
+@media (min-width: 768px) and (min-height: 600px) {
+  .portfolio-section,
+  .section-py {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
 }
 
 @media (max-width: 767px) {
+  .portfolio-section,
   .section-py {
-    padding-top: 110px;
-    padding-bottom: 110px;
+    min-height: auto;
+    padding-top: 4.5rem;
+    padding-bottom: 3.5rem;
   }
 }
 
-/* ===== Focus chips extra top gap (plain CSS) ===== */
+/* ===== Focus chips extra top gap ===== */
 .focus-chips-gap {
-  margin-top: 90px;
+  margin-top: clamp(2.5rem, 5vh, 4.5rem);
 }
 
-/* ===== Layout ===== */
+/* ===== Layout: Widened Container (min(90vw, 1400px)) ===== */
 .container-wide {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  width: min(90vw, 1400px);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   position: relative;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .container-wide {
-    padding: 0 2.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .container-wide {
-    padding: 0 4rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container-wide {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* ===== Active Section Entrance (Settle Animation) ===== */
+.section-settle {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(5px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.section-settle.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-settle {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
   }
 }
 

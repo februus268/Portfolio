@@ -12,11 +12,11 @@ interface SectionHeadingProps {
 export function SectionHeading({ kicker, title, description, align = 'left' }: SectionHeadingProps) {
   return (
     <div
-      className={`mb-20 md:mb-28 ${align === 'left' ? 'max-w-3xl' : ''}`}
-      style={align === 'center' ? { textAlign: 'center', maxWidth: '42rem', marginLeft: 'auto', marginRight: 'auto' } : undefined}
+      className={`mb-10 md:mb-14 lg:mb-16 ${align === 'left' ? 'max-w-4xl' : ''}`}
+      style={align === 'center' ? { textAlign: 'center', maxWidth: '46rem', marginLeft: 'auto', marginRight: 'auto' } : undefined}
     >
       <span
-        className="kicker mb-6"
+        className="kicker mb-5"
         style={align === 'center' ? { justifyContent: 'center' } : undefined}
       >
         {kicker}
@@ -26,12 +26,30 @@ export function SectionHeading({ kicker, title, description, align = 'left' }: S
       </h2>
       {description && (
         <p
-          className="mt-6 text-text-secondary text-lg md:text-xl leading-relaxed max-w-xl"
+          className="mt-5 text-text-secondary text-lg md:text-xl leading-relaxed max-w-2xl"
           style={align === 'center' ? { marginLeft: 'auto', marginRight: 'auto' } : undefined}
         >
           {description}
         </p>
       )}
+    </div>
+  )
+}
+
+interface SectionContentProps {
+  children: ReactNode
+  className?: string
+}
+
+export function SectionContent({ children, className = '' }: SectionContentProps) {
+  const { ref, isInView } = useInView(0.08)
+
+  return (
+    <div
+      ref={ref}
+      className={`section-settle ${isInView ? 'is-active' : ''} container-wide my-auto w-full ${className}`}
+    >
+      {children}
     </div>
   )
 }

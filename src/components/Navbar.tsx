@@ -81,7 +81,7 @@ export default function Navbar() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="font-display font-semibold text-[1.35rem] md:text-[1.8rem] tracking-tight text-text-primary hover:text-accent transition-colors cursor-pointer"
         >
-          Ngô Võ Công Quyến
+          februus268
         </motion.button>
 
         {/* Desktop nav links */}

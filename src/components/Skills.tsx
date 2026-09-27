@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { SectionHeading, Reveal } from "./ui";
+import { SectionHeading, Reveal, SectionContent } from "./ui";
 import { useInView } from "../hooks/useAnimations";
 import {
   Code2,
@@ -271,7 +271,7 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
         {/* Description */}
         <p
           className="
-            max-w-[430px]
+            max-w-[520px]
             text-base
             md:text-[1.05rem]
             leading-7
@@ -361,7 +361,7 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-py relative overflow-hidden">
+    <section id="skills" className="portfolio-section relative overflow-hidden">
       {/* Background decoration */}
       <div
         className="
@@ -381,7 +381,7 @@ export default function Skills() {
         }}
       />
 
-      <div className="container-wide relative z-10">
+      <SectionContent className="relative z-10">
         <Reveal>
           <SectionHeading
             kicker="Skills"
@@ -390,12 +390,12 @@ export default function Skills() {
           />
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6">
+        <div className="mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6">
           {skillGroups.map((group, i) => (
             <SkillCard key={group.title} group={group} index={i} />
           ))}
         </div>
-      </div>
+      </SectionContent>
     </section>
   );
 }

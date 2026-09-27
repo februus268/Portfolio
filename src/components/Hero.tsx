@@ -365,8 +365,8 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-36 pb-24 md:pt-40 overflow-hidden">
-      <div className="container-wide grid lg:grid-cols-[1.05fr_0.95fr] gap-20 lg:gap-20 items-center">
+    <section id="hero" className="portfolio-section relative min-h-screen flex flex-col justify-center overflow-hidden pt-28 pb-16 md:pt-32 md:pb-20">
+      <div className="container-wide my-auto w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
         {/* Text column */}
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.span variants={fadeUp} className="kicker mb-10">
@@ -408,7 +408,7 @@ export default function Hero() {
 
           <motion.p
             variants={fadeUp}
-            className="mt-6 max-w-md text-text-muted text-base md:text-lg leading-relaxed"
+            className="mt-6 max-w-xl text-text-muted text-base md:text-lg leading-relaxed"
           >
             Building my skills in software development, algorithms, and modern
             technology.
