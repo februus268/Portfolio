@@ -173,7 +173,7 @@ function CodeWindow() {
       {badges.map((b) => (
         <motion.div
           key={b.label}
-          className="hidden sm:flex items-center gap-2 absolute z-20 px-4 py-2.5 rounded-xl bg-bg-surface/95 backdrop-blur border border-border text-[13px] font-mono font-medium text-text-secondary shadow-[0_10px_28px_-10px_rgba(30,30,60,0.22)]"
+          className="flex items-center gap-1.5 absolute z-20 px-2.5 py-1.5 sm:gap-2 sm:px-4 sm:py-2.5 rounded-xl bg-bg-surface/95 backdrop-blur border border-border text-[10px] sm:text-[13px] font-mono font-medium text-text-secondary shadow-[0_10px_28px_-10px_rgba(30,30,60,0.22)]"
           style={{
             top: b.top,
             left: b.left,
@@ -440,7 +440,7 @@ export default function Hero() {
 
           <motion.div
             variants={fadeUp}
-            className="hero-social-links flex items-center gap-10"
+            className="hero-social-links flex items-center gap-10 sm:translate-x-[5px]"
           >
             <a
               href="https://github.com/februus268"

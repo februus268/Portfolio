@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionHeading, Reveal, SectionContent } from "./ui";
 import { useInView } from "../hooks/useAnimations";
@@ -71,12 +72,21 @@ const skillGroups: SkillGroup[] = [
 
 function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
   const { ref, isInView } = useInView(0.15);
+  const [isSelected, setIsSelected] = useState(false);
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      animate={
+        isInView
+          ? {
+              opacity: 1,
+              y: isSelected ? -8 : 0,
+              scale: isSelected ? 1.015 : 1,
+            }
+          : { opacity: 0, y: 40 }
+      }
       transition={{
         duration: 0.7,
         delay: index * 0.08,
@@ -85,6 +95,16 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
       whileHover={{
         y: -8,
         scale: 1.015,
+      }}
+      onClick={() => setIsSelected((selected) => !selected)}
+      role="button"
+      tabIndex={0}
+      aria-pressed={isSelected}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setIsSelected((selected) => !selected);
+        }
       }}
       style={
         {
@@ -100,13 +120,12 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
         bg-bg-surface
         overflow-hidden
         transition-all duration-500
-        hover:border-transparent
-        hover:shadow-[0_25px_70px_-25px_var(--skill-color)]
+        ${isSelected ? "border-transparent shadow-[0_25px_70px_-25px_var(--skill-color)]" : "hover:border-transparent hover:shadow-[0_25px_70px_-25px_var(--skill-color)]"}
       `}
     >
       {/* Large decorative glow */}
       <div
-        className="
+        className={`
           pointer-events-none
           absolute
           -top-24
@@ -118,15 +137,14 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
           opacity-[0.07]
           transition-all
           duration-700
-          group-hover:opacity-[0.20]
-          group-hover:scale-125
-        "
+          ${isSelected ? "opacity-[0.20] scale-125" : "group-hover:opacity-[0.20] group-hover:scale-125"}
+        `}
         style={{ background: group.gradient }}
       />
 
       {/* Bottom glow */}
       <div
-        className="
+        className={`
           pointer-events-none
           absolute
           -bottom-32
@@ -138,22 +156,22 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
           opacity-0
           transition-opacity
           duration-700
-          group-hover:opacity-[0.10]
-        "
+          ${isSelected ? "opacity-[0.10]" : "group-hover:opacity-[0.10]"}
+        `}
         style={{ background: group.color }}
       />
 
       {/* Subtle gradient overlay */}
       <div
-        className="
+        className={`
           pointer-events-none
           absolute
           inset-0
           opacity-0
           transition-opacity
           duration-500
-          group-hover:opacity-100
-        "
+          ${isSelected ? "opacity-100" : "group-hover:opacity-100"}
+        `}
         style={{
           background: `linear-gradient(
             135deg,
@@ -165,7 +183,7 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
 
       {/* Hover border */}
       <div
-        className="
+        className={`
           pointer-events-none
           absolute
           inset-0
@@ -175,8 +193,8 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
           opacity-0
           transition-opacity
           duration-500
-          group-hover:opacity-100
-        "
+          ${isSelected ? "opacity-100" : "group-hover:opacity-100"}
+        `}
         style={{ borderColor: group.color }}
       />
 
@@ -211,7 +229,7 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
             stiffness: 300,
             damping: 15,
           }}
-          className="
+          className={`
             relative
             mb-7
             w-16
@@ -222,7 +240,10 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
             justify-center
             border
             shadow-sm
-          "
+            transition-transform
+            duration-500
+            ${isSelected ? "scale-110 rotate-[5deg]" : "group-hover:scale-110 group-hover:rotate-[5deg]"}
+          `}
           style={{
             background: `color-mix(in srgb, ${group.color} 10%, white)`,
             borderColor: `color-mix(in srgb, ${group.color} 25%, transparent)`,
@@ -233,7 +254,7 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
 
           {/* Small orbit dot */}
           <span
-            className="
+            className={`
               absolute
               -top-1
               -right-1
@@ -244,9 +265,8 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
               scale-0
               transition-all
               duration-500
-              group-hover:opacity-100
-              group-hover:scale-100
-            "
+              ${isSelected ? "opacity-100 scale-100" : "group-hover:opacity-100 group-hover:scale-100"}
+            `}
             style={{
               background: group.gradient,
             }}
@@ -255,7 +275,7 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
 
         {/* Title */}
         <h3
-          className="
+          className={`
             font-display
             text-2xl
             md:text-[1.75rem]
@@ -265,8 +285,8 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
             mb-3
             transition-transform
             duration-500
-            group-hover:-translate-y-1
-          "
+            ${isSelected ? "-translate-y-1" : "group-hover:-translate-y-1"}
+          `}
         >
           {group.title}
         </h3>
@@ -300,7 +320,7 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
                 y: -3,
                 scale: 1.05,
               }}
-              className="
+              className={`
                 px-3.5
                 py-2
                 rounded-full
@@ -313,8 +333,8 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
                 text-text-secondary
                 transition-all
                 duration-300
-                hover:bg-white
-              "
+                ${isSelected ? "bg-white" : "hover:bg-white"}
+              `}
               style={
                 {
                   "--pill-hover": group.color,
@@ -328,7 +348,7 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
 
         {/* Corner arrow */}
         <div
-          className="
+          className={`
             absolute
             top-6
             right-6
@@ -346,10 +366,8 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
             -translate-y-2
             transition-all
             duration-500
-            group-hover:opacity-100
-            group-hover:translate-x-0
-            group-hover:translate-y-0
-          "
+            ${isSelected ? "opacity-100 translate-x-0 translate-y-0" : "group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0"}
+          `}
           style={{
             color: group.color,
             borderColor: `color-mix(in srgb, ${group.color} 25%, transparent)`,
