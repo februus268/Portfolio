@@ -1,27 +1,27 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Education from './components/Education'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import { useCursorGlow } from './hooks/useAnimations'
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Education from "./components/Education";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import { useCursorGlow } from "./hooks/useAnimations";
 
 /* ===== Entrance Loader ===== */
 function Loader({ onDone }: { onDone: () => void }) {
   useEffect(() => {
-    const timer = setTimeout(onDone, 1000)
-    return () => clearTimeout(timer)
-  }, [onDone])
+    const timer = setTimeout(onDone, 1000);
+    return () => clearTimeout(timer);
+  }, [onDone]);
 
   return (
     <motion.div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-bg-primary"
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
     >
       <motion.div
         initial={{ opacity: 0, y: 8 }}
@@ -30,23 +30,30 @@ function Loader({ onDone }: { onDone: () => void }) {
         className="flex flex-col items-center gap-4"
       >
         <span className="font-display font-semibold text-xl text-text-primary tracking-tight">
-          Ngô Võ Công Quyến
+          februus.268
         </span>
         <motion.div
           className="w-10 h-0.5 rounded-full origin-left"
-          style={{ background: 'linear-gradient(90deg, var(--color-accent), var(--color-violet))' }}
+          style={{
+            background:
+              "linear-gradient(90deg, var(--color-accent), var(--color-violet))",
+          }}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+          transition={{
+            duration: 0.7,
+            delay: 0.15,
+            ease: [0.16, 1, 0.3, 1] as const,
+          }}
         />
       </motion.div>
     </motion.div>
-  )
+  );
 }
 
 /* ===== Ambient background: blobs, grain dots, cursor glow ===== */
 function AmbientBackground() {
-  const cursor = useCursorGlow()
+  const cursor = useCursorGlow();
 
   return (
     <>
@@ -58,14 +65,14 @@ function AmbientBackground() {
       <motion.div
         className="cursor-glow"
         animate={{ x: cursor.x, y: cursor.y }}
-        transition={{ type: 'spring', stiffness: 120, damping: 25, mass: 0.4 }}
+        transition={{ type: "spring", stiffness: 120, damping: 25, mass: 0.4 }}
       />
     </>
-  )
+  );
 }
 
 export default function App() {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   return (
     <>
@@ -93,5 +100,5 @@ export default function App() {
         </motion.div>
       )}
     </>
-  )
+  );
 }
